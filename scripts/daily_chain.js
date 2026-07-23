@@ -303,7 +303,6 @@ function nextRunTime() {
             await runOnce()
         } catch (e) {
             log('本轮执行出错:', e.message ?? e)
-            await alertFail(null, `本轮执行出错: ${e.message ?? e}`)
         }
         log('单次模式，结束。')
         return
@@ -320,6 +319,7 @@ function nextRunTime() {
             await runOnce()
         } catch (e) {
             log('本轮执行出错（不中断循环）:', e.message ?? e)
+            await alertFail(null, `本轮执行出错: ${e.message ?? e}`)
         }
     }
 })().catch((e) => {
